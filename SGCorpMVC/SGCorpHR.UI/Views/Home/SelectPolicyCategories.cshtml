@@ -1,0 +1,27 @@
+﻿@using System.Web.Mvc.Html
+@model SGCorpHR.UI.Models.CategoryVM
+@{
+    ViewBag.Title = "SelectPolicyCategories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View Policy Documents</h2>
+
+<div class="dropdown">
+
+
+    @using (Html.BeginForm("ViewPolicyDocuments","Home",FormMethod.Post))
+    {
+        <label>Category: </label>
+        @Html.DropDownListFor(m => m.SelectedCategory, Model.Categories, new { @class = "form-control" })
+
+    <br />
+    <input type="submit" value="Submit" />
+    }
+  
+    
+
+</div>
+
+
+

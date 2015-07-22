@@ -1,0 +1,324 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Warmups.Loops.BLL
+{
+    public class LoopWarmups
+    {
+        public string StringTimes(string str, int n)
+        {
+            string result = "";
+
+            for (int i = 0; i < n; i++)
+            {
+                result += str;
+            }
+
+            return result;
+        }
+
+        public string FrontTimes(string str, int n)
+        {
+            string front = "";
+            int strLength = str.Length;
+            string result = "";
+
+            if (strLength < 3)
+            {
+                front = str.Substring(0);
+            }
+
+            front = str.Substring(0, 3);
+
+            for (int i = 0; i < n; i++)
+            {
+                result += front;
+            }
+
+            return result;
+        }
+
+        public int CountXX(string str)
+        {
+            int strLength = str.Length;
+            int xxCount = 0;
+            int startChar = 0;
+
+            do
+            {
+                if (str.Substring(startChar, 2) == "xx")
+                {
+                    xxCount++;
+                    startChar++;
+                }
+                else
+                {
+                    startChar++;
+                }
+            } while (startChar < (strLength - 1));
+            //it would not let me allow the Count to be used as an int!!!
+
+            return xxCount;
+        }
+        //I did not test for if the FIRST occurence of x is double
+        public bool DoubleX(string str)
+        {
+            int strLength = str.Length;
+            int startChar = 0;
+            bool twoXs = false;
+            do
+            {
+                if (str.Substring(startChar, 1) == "x" && str.Substring(startChar + 1, 1) != "x")
+                {
+                    twoXs = false;
+                    break;
+                }
+                if (str.Substring(startChar, 2) != "xx")
+                {
+                    startChar++;
+                    continue;
+                }
+                else
+                {
+                    twoXs = true;
+                    break;
+                }
+            } while (startChar < (strLength - 2));
+
+            return twoXs;
+        }
+
+        public string EveryOther(string str)
+        {
+            string result = "";
+            int strLength = str.Length;
+            int startChar = 0;
+
+            while (startChar <= (strLength - 1))
+            {
+                result += str.Substring(startChar, 1);
+                startChar = startChar + 2;
+            }
+            return result;
+        }
+
+        public string StringSplosion(string str)
+        {
+            string result = "";
+            int strLength = str.Length;
+            for (int i = 1; i <= strLength; i++)
+            {
+                result += str.Substring(0, i);
+            }
+            return result;
+        }
+
+        public int CountLast2(string str)
+        {
+            int strLength = str.Length;
+            int pairCount = 0;
+            string compare2Us = str.Substring(strLength - 2);
+            int startChar = 0;
+
+            do
+            {
+                if (str.Substring(startChar, 2) == compare2Us)
+                {
+                    pairCount++;
+                }
+                startChar++;
+            } while (startChar <= strLength - 3);
+            return pairCount;
+        }
+
+        public int Count9(int[] nums)
+        {
+            int num9s = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] == 9)
+                {
+                    num9s++;
+                }
+            }
+            return num9s;
+        }
+
+        public bool ArrayFront9(int[] nums)
+        {
+            int i = 0;
+            bool is9InFront = false;
+            do
+            {
+                if (nums[i] == 9)
+                {
+                    is9InFront = true;
+                    break;
+                }
+                i++;
+
+            } while (i <= 3);
+            return is9InFront;
+        }
+
+        public bool Array123(int[] nums)
+        {
+            bool has123 = false;
+            for (int i = nums.Length - 1; i >= 1; i--)
+            {
+                if (nums[i] == 3 && i < 2)
+                {
+                    break;
+                }
+                if (nums[i] == 3 && nums[i - 1] == 2 && nums[i - 2] == 1)
+                {
+                    has123 = true;
+                }
+            }
+            return has123;
+        }
+
+        public int SubstringMatch(string str1, string str2)
+        {
+            int subStringCount = 0;
+            if (str1.Length < str2.Length)
+            {
+                for (int i = 0; i < str1.Length - 1; i++)
+                {
+                    if (str1.Substring(i, 2) == str2.Substring(i, 2))
+                    {
+                        subStringCount++;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < str2.Length - 1; i++)
+                {
+                    if (str1.Substring(i, 2) == str2.Substring(i, 2))
+                    {
+                        subStringCount++;
+                    }
+                }  
+            }
+            return subStringCount;
+        }
+
+        public string StringX(string str)
+        {
+            string result = "";
+            //It does not matter what the letter is - you keep it!
+            result += str.Substring(0, 1);
+            
+            //Start with the second position to determine if you keep it.
+            for (int i=1; i < str.Length-1; i++)
+            {
+                if (str.Substring(i, 1) == "x")
+                {
+                    result += "";
+                }
+                else
+                {
+                    result += str.Substring(i, 1);
+                }
+            }
+            //It does not matter what this letter is, either!  Keep it.
+            result += str.Substring(str.Length - 1);
+            return result;
+        }
+
+        public string AltPairs(string str)
+        {
+            string result = "";
+
+            //finding out if the string is even - which will determine characters 0,1 xx 4, 5 xx etc
+            if (str.Length % 2 == 0)
+            {
+                //***did not work for 12-char string
+                for (int i = 0; i < str.Length; i += 4)
+                {
+                    result += str.Substring(i, 2);
+                }
+            }
+            else
+                //What to do with odd string lengths
+            {
+                for (int i = 0; i < str.Length-1; i += 4)
+                {
+                    result += str.Substring(i, 2);
+                }
+                //this is so that you don't do beyond the end of the string array
+                result += str.Substring(str.Length - 1);
+            }
+            return result;
+        }
+
+        public string DoNotYak(string str)
+        {
+            string result = "";
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                //To see if we are at the safe distance from the end!
+                if (i + 2 < str.Length && str.Substring(i, 1) == "y" && str.Substring(i+1, 1) == "a" && str.Substring(i+2, 1) == "k")
+                //if (str.Substring(i, 3) == "yak")
+                {
+                    i += 2;
+                    // result += "";
+                }
+                else
+                {
+                    result += str.Substring(i, 1);
+                }
+            }
+            return result;
+        }
+
+        public int Array667(int[] numbers)
+        {
+            int countedPair = 0;
+            for (int i = 0; i < numbers.Length-1; i++)
+            {
+                if (numbers[i] == 6 && numbers[i + 1] == 6)
+                {
+                    countedPair++;
+                }
+                if (numbers[i] == 6 && numbers[i + 1] == 7)
+                {
+                    countedPair++;
+                }
+            }
+            return countedPair;
+        }
+
+        public bool NoTriples(int[] numbers)
+        {
+            bool hasNoTris = true;
+            for (int i = 0; i <= numbers.Length - 2; i++)
+            {
+                if (numbers[i] == numbers[i + 1] && numbers[i + 1] == numbers[i + 2])
+                {
+                    hasNoTris = false;
+                }
+            }
+            return hasNoTris;
+        }
+
+        public bool Pattern51(int[] numbers)
+        {
+            bool hasPattern = false;
+            for (int i = 0; i <= numbers.Length - 2; i++)
+            {
+                if (numbers[i] == 2 && numbers[i + 1] == 7 && numbers[i + 2] == 1)
+                {
+                    hasPattern = true;
+                }
+            }
+            return hasPattern;
+        }
+
+    }
+}

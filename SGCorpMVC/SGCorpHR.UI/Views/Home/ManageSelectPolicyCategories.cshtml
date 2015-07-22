@@ -1,0 +1,29 @@
+﻿@using System.Web.Mvc.Html
+@model SGCorpHR.Models.Response<List<string>>
+@{
+    ViewBag.Title = "ManageSelectPolicyCategories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View Policy Documents</h2>
+
+<div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Select Category
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        @foreach (var category in Model.Data)
+        {
+            <li>
+                <form action="/Home/ManageViewPolicyDocuments" method="Post">
+                    <input type="hidden" name="Category" id="Category" value="@category" />
+                    <button>
+
+                        @category
+                    </button>
+                </form>
+            </li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,13 @@
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.Models\bin\Debug\SGCorpHR.Models.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.Models\bin\Debug\SGCorpHR.Models.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.Models\obj\Debug\SGCorpHR.Models.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.Models\obj\Debug\SGCorpHR.Models.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.Models\obj\Debug\SGCorpHR.Models.csprojResolveAssemblyReference.cache
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.Models\bin\Debug\SGCorpHR.Models.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.Models\bin\Debug\SGCorpHR.Models.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.Models\bin\Debug\Dapper.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.Models\bin\Debug\Dapper.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.Models\bin\Debug\Dapper.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.Models\obj\Debug\SGCorpHR.Models.csprojResolveAssemblyReference.cache
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.Models\obj\Debug\SGCorpHR.Models.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.Models\obj\Debug\SGCorpHR.Models.pdb

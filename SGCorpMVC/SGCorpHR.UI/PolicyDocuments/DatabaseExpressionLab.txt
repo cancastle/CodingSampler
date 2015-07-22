@@ -1,0 +1,10 @@
+Database Labs for Expressions
+
+1. 	In Northwind, print a list of products, the value of the stock (unit price * quantity) 
+	and sort it by the value from most to least
+	
+2. 	In Northwind, get a list of employees with a column called NameLastFirst which should 
+	be formatted as LastName, FirstName.  Sort it alpha by last name then first name
+	
+3.	Take your query from #1 and also create columns to value the stock in Canadian Dollars, 
+	Japanese Yen, Euros, and Pesos given today’s exchange rates

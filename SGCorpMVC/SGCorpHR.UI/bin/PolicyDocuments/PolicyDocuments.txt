@@ -1,0 +1,8 @@
+PolicyDocumentId,Name,Category,FilePath
+1,Female Professional,DRESS CODE,Business-Professional-Female.jpg, 0
+2,Male Professional,DRESS CODE,Business-Professional-Male.jpg, 0
+3,TimeOff,VACATION,Business-Casual-Options-Female.jpg, 0
+4,test,DRESS CODE,039 - Sorting Data.pdf, 0
+5,Health,INSURANCE,042 - Aggregates.pdf, 0
+6,DB,TEST,DatabaseExpressionLab.txt, 0
+7,DB,NEW,Elevator talk.txt, 1

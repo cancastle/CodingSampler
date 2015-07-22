@@ -1,0 +1,9 @@
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.BLL\bin\Debug\SGFlooringCorp.BLL.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.BLL\bin\Debug\SGFlooringCorp.BLL.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.BLL\bin\Debug\SGFlooringCorp.Data.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.BLL\bin\Debug\SGFlooringCorp.Models.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.BLL\bin\Debug\SGFlooringCorp.Data.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.BLL\bin\Debug\SGFlooringCorp.Models.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.BLL\obj\Debug\SGFlooringCorp.BLL.csprojResolveAssemblyReference.cache
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.BLL\obj\Debug\SGFlooringCorp.BLL.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.BLL\obj\Debug\SGFlooringCorp.BLL.pdb

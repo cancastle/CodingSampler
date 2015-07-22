@@ -1,0 +1,52 @@
+SG Corp HR Portal
+CR004 - PTO Submission
+
+Summary:
+With the addition of our self-service time tracking system, the HR department has requested 
+the ability to have employees submit requests for PTO (Paid Time Off).  These requests can 
+later be approved at which point they will be reflected in their time sheet.
+
+Requirements:
+1.	Add two new menu items to the existing Time Tracking dropdown menu. The options are:
+		* Submit PTO Request
+		* View PTO Requests
+	
+2.	The Submit PTO Request page will be a simple form with the following fields:
+		* Employee (dropdown with each employee's Last, First names as the text and EmpID as 
+		  the value).
+		* Date (This should be a datepicker field) *Hint: remember we can decorate the
+		  properties in our model to indicate the data type and use @Html.EditorFor()
+		* Hours (This can be any type of control you wish, but it should be something
+		  that limits the user to entering only one of two values as PTO is only allowed to
+		  be taken in blocks of 4 or 8 hours at a time).
+	When PTO requests are submitted they should be automatically entered with a status of 
+	"Submitted".
+		  
+3.	The View PTO Requests page will have a list of all submitted PTO requests displayed.  The
+	table should include the employee who requested the PTO, the date that it is requested for,
+	the number of hours requested, the status of the request, the reason (used when rejected), 
+	and the employee who approved the request (if in Approved status).  Each row should also 
+	have a button to edit the request.  Clicking the Edit button will load the request 
+	in a PTO Edit Form.
+	
+4.  The PTO Edit Form will load a given request (Based on which was selected in the View page).
+	The user can then edit any of the available values as they were initially entered on the Submit
+	page.  Additionally, the user will have the ability to change the status of the request and
+	select the name of the employee doing the approval.  Edit form fields are as follows:
+		* Employee (dropdown with each employee's Last, First names as the text and EmpID as 
+		  the value).
+		* Date (This should be a datepicker field) *Hint: remember we can decorate the
+		  properties in our model to indicate the data type and use @Html.EditorFor()
+		* Hours (This can be any type of control you wish, but it should be something
+		  that limits the user to entering only one of two values as PTO is only allowed to
+		  be taken in blocks of 4 or 8 hours at a time).
+		* Status (Dropdown with the the values of "Submitted", "Approved", "Rejected")
+		* Reason (This should be a textbox where the approver can enter a reason for rejection).
+		* Approver (Dropdown of Employees)
+	
+5.	When a PTO Request is approved in the Edit Form, the appropriate values should automatically 
+	be added to the timesheet for the user that made the request.
+	
+
+
+	

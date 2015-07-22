@@ -1,0 +1,35 @@
+SG Corp HR Portal
+CR003 - Time Tracking
+
+Summary:
+In order to keep a more accurate accounting of time each employee is working, the HR
+department has requested a self-service time tracking page in the HR Portal.  This will
+start as a simple time tracking page but will give us a basis to add additional features
+as time goes on.
+
+Requirements:
+1.	Add "Time Tracking" as a top level menu item.  This should be a dropdown menu with the 
+	following options: 
+		* Submit Time
+		* View Timesheet
+		
+2.	The Submit Time page will be a simple form to submit a time entry.  The following fields
+	should be on the form:
+		* Employee (dropdown with each employee's Last, First names as the text and EmpID as 
+		  the value).
+		* Date (This should be a datepicker field) *Hint: remember we can decorate the
+		  properties in our model to indicate the data type and use @Html.EditorFor()
+		* Hours Worked (This is just a textbox that accepts a decimal value should not be able
+		  to submit more than 16 hours in a single entry).
+	Upon Submission of the Form, the user should be redirected to the View Timesheet page.
+
+3.	The View Timesheet page will have a dropdown list at the top that allows the user to select
+	which employee (similar to the one on the submit page) to view time for.  After the user 
+	selects an employee, it will load a summary section at the top that shows the employee name, 
+	hire date and total hours worked to date.  Below the summary section, there will be a grid
+	that lists all of the time entry records for this employee with the newest first.  There will
+	be a button on each row to allow the user to delete a single time entry.  This should cause the
+	page to refresh and show updated an summary at the top.
+	
+Items not in scope:  
+1.  We will not have a way in this iteration to edit a time entry record.  

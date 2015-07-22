@@ -1,0 +1,6 @@
+﻿OrderNumber,CustomerName,State,TaxRate,ProductType,Area,CostPerSquareFoot,LaborCostPerSquareFoot,MaterialCost,TotalLaborCost,TotalTax,Total
+1,"John Smith","Washington",.15,"Carpet",100,15,30,50,100,150,1000
+2,"Mary Lopez","Nevada",.25,"Vinyl",200,35,60,20,300,250,3000
+3,"Beyonce Carter","Texas",.10,"Hardwood",1500,45,30,55,750,450,9000
+4,"Vishal Marocha","New Jersey",.75,"Carpet",50,15,30,50,50,75,500
+5,"Kara Littlejoh","Illinois",.85,"Vinyl",750,35,60,200,600,450,15900

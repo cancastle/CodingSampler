@@ -1,0 +1,6 @@
+﻿PolicyDocumentId,Name,Category,FilePath,CategoryID
+1,Female Professional,DRESS CODE,Business-Professional-Female.jpg,1
+2,Male Professional,DRESS CODE,Business-Professional-Male.jpg,1
+3,TimeOff,VACATION,Business-Casual-Options-Female.jpg,2
+4,test,DRESS CODE,039 - Sorting Data.pdf,1
+5,Health,INSURANCE,042 - Aggregates.pdf,3

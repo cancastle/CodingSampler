@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ContactsV1.UI.Workflows
+{
+    public class Menu
+    {
+        public void Execute()
+        {
+            string userInput;
+
+            do
+            {
+                DisplayMenu();
+
+                userInput = Console.ReadLine();
+
+                ProcessUserChoice(userInput);
+
+            } while (userInput != "Q");
+        }
+
+        private void ProcessUserChoice(string userInput)
+        {
+            switch (userInput)
+            {
+                case "1":
+                    ListContact listWorkflow = new ListContact();
+                    listWorkflow.Execute();
+                    break;
+                case "2":
+                    AddContact addWorkflow = new AddContact();
+                    addWorkflow.Execute();
+                    break;
+            }
+        }
+
+        private void DisplayMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("*******  Contacts V1 ********\n");
+            Console.WriteLine("Make your selection:");
+            Console.WriteLine("1. ListContacts");
+            Console.WriteLine("2. Add New Contact");
+            Console.WriteLine("3. Edit Contact");
+            Console.WriteLine("\nQ to Quit");
+        }
+    }
+}

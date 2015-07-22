@@ -1,0 +1,17 @@
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Tests\bin\Debug\DataFiles\Orders_01132015.txt
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Tests\bin\Debug\DataFiles\Orders_02242015.txt
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Tests\bin\Debug\DataFiles\Orders_06012015.txt
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Tests\bin\Debug\SGFlooringCorp.Tests.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Tests\bin\Debug\SGFlooringCorp.Tests.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Tests\bin\Debug\nunit.framework.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Tests\bin\Debug\SGFlooringCorp.BLL.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Tests\bin\Debug\SGFlooringCorp.Data.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Tests\bin\Debug\SGFlooringCorp.Models.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Tests\bin\Debug\SGFlooringCorp.BLL.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Tests\bin\Debug\SGFlooringCorp.Data.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Tests\bin\Debug\SGFlooringCorp.Models.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Tests\bin\Debug\nunit.framework.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Tests\obj\Debug\SGFlooringCorp.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Tests\obj\Debug\SGFlooringCorp.Tests.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Tests\obj\Debug\SGFlooringCorp.Tests.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Tests\bin\Debug\SGFlooringCorp.Tests.dll.config

@@ -1,0 +1,7 @@
+OrderNumber,CustomerName,State,TaxRate,ProductType,Area,CostPerSquareFoot,LaborCostPerSquareFoot,MaterialCost,LaborCost,Tax,Total
+1,Gina Lowell,OH,0.065,Hardwood,665.5,7.55,4.12,5024.525,2741.860,504.815025,8271.200025
+7,Farren Risotto,OH,0.065,Hardwood,530.3,7.55,4.12,4003.765,2184.836,402.259065,6590.860065
+8,Vonda Brotherton,OH,0.065,Hardwood,530.6,7.55,4.12,4006.030,2186.072,402.486630,6594.588630
+12,Jennifer Jordan,OH,0.065,Hardwood,400.5,7.55,4.12,3023.775,1650.060,303.799275,4977.634275
+9,Jenny Graffe,OH,0.065,Hardwood,450.3,7.55,4.12,456.020,248.848,45.816420,750.684420
+11,Janice Nieto,OH,0.065,Hardwood,342.5,7.55,4.12,4254.425,2321.620,427.442925,7003.487925

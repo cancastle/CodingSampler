@@ -1,0 +1,6 @@
+﻿ProductType,CostPerSquareFoot,LaborCostPerSquareFoot
+Hardwood,7.55,4.12
+Laminate,5.48,2.96
+Ceramic,6.05,3.89
+Carpet,2.28,2.65
+Vinyl,.75,1.87

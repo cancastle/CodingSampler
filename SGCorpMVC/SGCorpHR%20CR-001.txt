@@ -1,0 +1,31 @@
+SG Corp HR Portal
+CR001 - Site Menu and Employee Suggestion Box
+
+Summary:
+As we continue to expand our HR portal application, we have decided that we need a way to keep
+our portal organized for the users so we will need to add a menu to our site.  Additionally, we
+want to have a way for for employees to submit suggestions for consideration.
+
+Requirements:
+1.  If you don't already have one, add a menu to the top of every page in the application. 
+
+2.  Add "Resume" as the first menu item.  This should be a drop down with two options 
+	("Upload Resume" & "View Resumes").  These will link to the pages you started previously.
+	In some cases this may require that you refactor your code.  
+	*Hint: Look for examples on how to create a dropdown menu at getbootstrap.com
+	*Hint: Think about where you would implement your menu so that you only have to do it 
+	once for all pages.
+	
+3.  Add another menu option for "Suggestions"
+	Suggestions should have two options in a drop down menu ("Submit Suggestion" & "View Suggestions")
+	Suggestions should be stored in a flat file database similar to what we used in the flooring
+	mastery project.  They should include the following fields:  SuggestionID, EmployeeName, and 
+	SuggestionText.  As the menu options suggest, we want a page to submit suggestions and one to
+	view them.  We also want to be able to delete suggestions from the view page.
+
+4.  Not all employees have access to the full HR portal.  We still want to allow them to submit suggestions.
+	We need to be able to give these employees a link to the Submit Suggestion page.  Add a route
+	configuration to have a url that looks something like:  <localhost:port>/suggestion
+	This should load the page.  Since we are not actually implementing security at this point, don't 
+	worry that the menu is available.  We can restrict this at a later time.
+	

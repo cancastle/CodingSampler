@@ -1,0 +1,51 @@
+﻿@model SGCorpHR.Models.Response<List<SGCorpHR.Models.PolicyDocument>>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>View Policy Documents</h2>
+
+<div>
+
+    <a href="/Home/SelectPolicyCategories">Select New Category</a>
+
+
+    @if (Model.Data != null)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>Category</th>
+                  
+                    <th>Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var policyDoc in Model.Data)
+                {
+                    <tr>
+                        <td>@policyDoc.Name</td>
+                        <td>@policyDoc.Category.CategoryName</td>
+                       
+                        <td>
+                            <form action="/Home/DownloadPolicyDoc" method="Post">
+                                <input type="hidden" name="FilePath" id="FilePath" value="@policyDoc.FilePath"/>
+                                <input type="hidden" name="Name" id="Name" value="@policyDoc.Name" />
+                                <button>Download</button>
+                            </form>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    }
+    else
+    {
+        { <p>@Model.Message</p>}
+    }
+</div>
+

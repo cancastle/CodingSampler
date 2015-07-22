@@ -1,0 +1,5 @@
+OrderNumber,CustomerName,State,TaxRate,ProductType,Area,CostPerSquareFoot,LaborCostPerSquareFoot,MaterialCost,LaborCost,Tax,Total
+3,Guy Raz,OH,0.075,Laminate,224.2,7.55,4.12,2447.710,1335.704,283.756050,4067.170050
+1,Katherine E. Lawless,OH,0.075,Hardwood,440.5,5.48,2.96,1865.940,1007.880,215.536500,3089.356500
+2,Suku Polavaram,OH,0.075,Laminate,253.5,5.48,2.96,841.180,454.360,97.165500,1392.705500
+4,Jeremiah The Bullfrog,PA,0.065,Laminate,23.1,7.55,4.12,174.405,95.172,17.522505,287.099505

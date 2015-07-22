@@ -1,0 +1,7 @@
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Data\bin\Debug\SGFlooringCorp.Data.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Data\bin\Debug\SGFlooringCorp.Data.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Data\bin\Debug\SGFlooringCorp.Models.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Data\bin\Debug\SGFlooringCorp.Models.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Data\obj\Debug\SGFlooringCorp.Data.csprojResolveAssemblyReference.cache
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Data\obj\Debug\SGFlooringCorp.Data.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Projects\SGFlooringCorp\SGFlooringCorp.Data\obj\Debug\SGFlooringCorp.Data.pdb

@@ -1,0 +1,84 @@
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\Image\swg_logo-white.png
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\PolicyDocuments\PolicyDocuments.txt
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\Suggestions\Suggestions.txt
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\SGCorpHR.UI.dll.config
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\SGCorpHR.UI.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\SGCorpHR.UI.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\SGCorpHR.BLL.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\SGCorpHR.DATA.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\SGCorpHR.Models.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\System.Web.Helpers.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\System.Web.Mvc.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\System.Web.Razor.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\System.Web.Webpages.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\System.Web.Webpages.Razor.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\SGCorpHR.BLL.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\SGCorpHR.DATA.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\SGCorpHR.Models.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\System.Web.Razor.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\System.Web.Webpages.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\System.Web.Webpages.Razor.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\System.Web.Helpers.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\bin\System.Web.Mvc.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\obj\Debug\SGCorpHR.UI.csprojResolveAssemblyReference.cache
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\obj\Debug\SGCorpHR.UI.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.UI\obj\Debug\SGCorpHR.UI.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\Image\swg_logo-white.png
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\PolicyDocuments\PolicyDocuments.txt
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\Suggestions\Suggestions.txt
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\SGCorpHR.UI.dll.config
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\SGCorpHR.UI.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\SGCorpHR.UI.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\SGCorpHR.BLL.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\SGCorpHR.DATA.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\SGCorpHR.Models.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\System.Web.Helpers.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\System.Web.Mvc.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\System.Web.Razor.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\System.Web.Webpages.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\System.Web.Webpages.Razor.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\SGCorpHR.BLL.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\SGCorpHR.DATA.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\SGCorpHR.Models.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\System.Web.Razor.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\System.Web.Webpages.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\System.Web.Webpages.Razor.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\System.Web.Helpers.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\bin\System.Web.Mvc.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\obj\Debug\SGCorpHR.UI.csprojResolveAssemblyReference.cache
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\obj\Debug\SGCorpHR.UI.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.UI\obj\Debug\SGCorpHR.UI.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\Image\swg_logo-white.png
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\PolicyDocuments\PolicyDocuments.txt
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\Suggestions\Suggestions.txt
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\SGCorpHR.UI.dll.config
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\SGCorpHR.UI.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\SGCorpHR.UI.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\Dapper.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\SGCorpHR.BLL.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\SGCorpHR.DATA.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\SGCorpHR.Models.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\System.Web.Helpers.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\System.Web.Mvc.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\System.Web.Razor.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\System.Web.Webpages.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\System.Web.Webpages.Razor.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\SGCorpHR.BLL.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\SGCorpHR.DATA.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\SGCorpHR.Models.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\Dapper.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\Dapper.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\System.Web.Razor.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\System.Web.Webpages.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\System.Web.Webpages.Razor.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\System.Web.Helpers.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\bin\System.Web.Mvc.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\obj\Debug\SGCorpHR.UI.csprojResolveAssemblyReference.cache
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\obj\Debug\SGCorpHR.UI.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.UI\obj\Debug\SGCorpHR.UI.pdb

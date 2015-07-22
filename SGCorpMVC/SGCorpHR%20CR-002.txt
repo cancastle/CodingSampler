@@ -1,0 +1,25 @@
+SG Corp HR Portal
+CR002 - Policy Document Library
+
+Summary:
+The HR department has a number of policy documents that employees need to refer to from time to
+time and they would like to make these available on the HR portal site for employees to be able
+to view at will.  They would also like to have the ability to manage these by adding new ones as 
+needed and deleting obsolete documents.
+
+Requirements:
+1.	Add "Policy Documents" as a top level menu item.  This should be a dropdown with two options.  
+	The first options should be "View Documents" and the second should be "Manage Documents".
+	
+2.	The manage documents page will allow an HR representative to either click a link to add a new
+	document or select a category from a dropdown list and then view the list of documents available 
+	in that category.  From the list, the user should have the ability to delete a document.
+
+3.	The add document page will allow an HR representative to either select an existing category or
+	enter a new category for the document.  There should also be a file upload control to save the 
+	document.
+	
+4.  The View Documents page should have a way to select a category. Once the user selects a category, 
+	a list of all the documents in that category will be displayed for the user.  The user should
+	be able to click on a document to be able to open it.
+	

@@ -1,0 +1,6 @@
+﻿OrderNumber,CustomerName,State,TaxRate,ProductType,Area,CostPerSquareFoot,LaborCostPerSquareFoot,MaterialCost,TotalLaborCost,TotalTax,Total
+1,Naomi Campbell,SD,.75,Tiles,100,15,30,50,100,150,666
+2,Kerry Washington,NC,.20,Vinyl,200,35,60,20,300,250,2598
+3,Bruno Mars,VA,.50,Carpet,1500,45,30,55,750,450,586
+4,Kelly Rowland,OR,.65,Hardwood,50,15,30,50,50,75,777
+5,Britt Nicole,CA,.95,Hardwood,100,35,60,200,600,450,12000

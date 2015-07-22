@@ -1,0 +1,24 @@
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.DATA\bin\Debug\SGCorpHR.DATA.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.DATA\bin\Debug\SGCorpHR.DATA.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.DATA\bin\Debug\SGCorpHR.Models.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.DATA\bin\Debug\SGCorpHR.Models.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.DATA\obj\Debug\SGCorpHR.DATA.csprojResolveAssemblyReference.cache
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.DATA\obj\Debug\SGCorpHR.DATA.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHR\SGCorpHR.DATA\obj\Debug\SGCorpHR.DATA.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.DATA\bin\Debug\SGCorpHR.DATA.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.DATA\bin\Debug\SGCorpHR.DATA.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.DATA\bin\Debug\SGCorpHR.Models.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.DATA\bin\Debug\SGCorpHR.Models.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.DATA\obj\Debug\SGCorpHR.DATA.csprojResolveAssemblyReference.cache
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.DATA\obj\Debug\SGCorpHR.DATA.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRAdded Interfaces\SGCorpHR.DATA\obj\Debug\SGCorpHR.DATA.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.DATA\bin\Debug\SGCorpHR.DATA.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.DATA\bin\Debug\SGCorpHR.DATA.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.DATA\bin\Debug\Dapper.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.DATA\bin\Debug\SGCorpHR.Models.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.DATA\bin\Debug\SGCorpHR.Models.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.DATA\bin\Debug\Dapper.pdb
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.DATA\bin\Debug\Dapper.xml
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.DATA\obj\Debug\SGCorpHR.DATA.csprojResolveAssemblyReference.cache
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.DATA\obj\Debug\SGCorpHR.DATA.dll
+C:\Users\Apprentice\Documents\Visual Studio 2013\Examining colleague's code\SGCorpHRCastle\SGCorpHR.DATA\obj\Debug\SGCorpHR.DATA.pdb

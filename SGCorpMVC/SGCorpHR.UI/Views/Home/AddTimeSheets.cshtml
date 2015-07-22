@@ -1,0 +1,22 @@
+﻿@model SGCorpHR.UI.Models.AddTimeSheetVM
+@{
+    ViewBag.Title = "AddTimeSheets";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddTimeSheets</h2>
+
+
+<div class="row">
+    @using (Html.BeginForm("AddTimeSheets", "Home", FormMethod.Post))
+    {
+        <div class="span6">
+            <label>Select Employee: </label>
+            @Html.DropDownListFor(m => m.SelectedEmployeeID, Model.Employees, new {@class = "form-control"})
+        </div>
+        <p>Date: @Html.EditorFor(m => m.timeEntry.Date)</p>
+        <p>Hours Worked: @Html.EditorFor(m => m.timeEntry.HoursWorked)</p>
+    <button class="btn btn-primary">Submit</button>
+    }
+
+</div>

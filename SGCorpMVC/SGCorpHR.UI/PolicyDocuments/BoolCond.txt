@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConditionalExercises
+{
+    public class BoolConditioner
+    {
+        public bool A;
+        public bool B;
+        public void AreWeInTrouble()
+        {
+            if (A == B)
+            {
+                Console.WriteLine("Are we in trouble = true");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("Are we in trouble = false");
+                Console.ReadLine();
+            }
+        }
+
+        public void CanWeSleepIn()
+        {
+            if (A = true)
+            {
+                if (B = true)
+                {
+                    Console.WriteLine(B);
+                    Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine(B);
+                    Console.ReadLine();
+                }
+                Console.WriteLine("true");
+                Console.ReadLine();
+                
+            }
+        }
+    }
+}
