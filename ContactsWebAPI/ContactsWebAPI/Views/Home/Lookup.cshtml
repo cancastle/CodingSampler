@@ -1,0 +1,38 @@
+﻿@*@{
+    ViewBag.Title = "Lookup";
+}
+
+<div class="row">
+    <div class="col-xs-6">
+        <h2>Search by ID</h2>
+        <div class="form-group">
+            <label>Contact Id</label>
+            <input type="text" id="contactID" class="form-control" />
+        </div>
+        <button class="btn btn-primary" onclick="find()">Search</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-6">
+        <br/><br/>
+        <p id="contact"/>
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+        var uri = '/api/contacts/';
+
+        function find() {
+            var id = $('#contactID').val();
+
+            $.getJSON(uri + id)
+                .done(function(data) {
+                    $('#contact').text(data.Name + ' - ' + data.PhoneNumber);
+                })
+                .fail(function(jqXhr, status, err) {
+                    $('#contact').text('Error: ' + err);
+                });
+        }
+    </script>
+}*@
