@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TechBlog.MODELS
+{
+   public class StaticPage
+    {
+       public string PageTitle { get; set; }
+       public string PageHtml { get; set; }
+       public DateTime DateCreated { get; set; }
+       public DateTime LastModified { get; set; }
+       public string Email { get; set; }
+       public string BpStatusName { get; set; }
+       public int StatusId { get; set; }
+       public string URLSlug { get; set; }
+       public int UserId { get; set; }
+       public int StaticPageId { get; set; }
+    }
+}

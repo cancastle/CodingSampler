@@ -1,0 +1,5 @@
+<connectionStrings>
+    <add name="CapstoneCMSDb" connectionString="Server=localhost\sql2014;Database=CapstoneCMS;Trusted_Connection=True;" />
+  </connectionStrings>
+  
+  What is it for the Db on my current computer?

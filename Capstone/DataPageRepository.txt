@@ -1,0 +1,96 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Dapper;
+using TechBlog.DATA.Config;
+using TechBlog.MODELS;
+
+namespace TechBlog.DATA
+{
+    public class PageRepository
+    {
+        public List<StaticPage> GetAllPages()
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var pages = cn.Query<StaticPage>("GetAllPages", commandType: CommandType.StoredProcedure).ToList();
+
+
+                return pages.Where(s => s.StatusId != 4).ToList();
+            }
+        }
+
+        public List<Status> GetStatus()
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var status = cn.Query<Status>("SELECT * FROM [Status]").ToList();
+
+                return status;
+            }
+        }
+
+        public void AddPage(StaticPage page)
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+
+
+                var p = new DynamicParameters();
+
+                p.Add("StatusId", page.StatusId);
+                p.Add("PageTitle", page.PageTitle);
+                p.Add("PageHTML", page.PageHtml);
+                p.Add("LastModified", page.LastModified);
+                p.Add("DateCreated", page.DateCreated);
+                p.Add("UserId", page.UserId);
+                p.Add("URLSlug", page.URLSlug);
+
+
+                cn.Execute("AddPage", p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public StaticPage GetPage(string URLSlug)
+        {
+            var page = GetAllPages().FirstOrDefault(u => u.URLSlug == URLSlug);
+
+            return page;
+        }
+
+        public void EditPage(StaticPage page)
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+
+
+                var p = new DynamicParameters();
+
+                p.Add("StatusId", page.StatusId);
+                p.Add("PageTitle", page.PageTitle);
+                p.Add("PageHTML", page.PageHtml);
+                p.Add("LastModified", page.LastModified);
+                p.Add("StaticPageId", page.StaticPageId);
+                p.Add("UserId", page.UserId);
+                p.Add("URLSlug", page.URLSlug);
+
+
+                cn.Execute("EditPage", p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void DeletePage(int id)
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var p = new DynamicParameters();
+                p.Add("StaticPageId", id);
+                cn.Execute("DeletePage", p, commandType: CommandType.StoredProcedure);
+            }
+        }
+    }
+}

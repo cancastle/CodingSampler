@@ -1,0 +1,87 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Security;
+using TechBlog.BLL;
+using TechBlog.DATA;
+using TechBlog.MODELS;
+
+namespace TechBlog.UI.Controllers
+{
+    public class AuthenticationController : Controller
+    {
+       // GET: User
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult LogIn()
+        {
+           
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult LogIn(User user)
+        {
+            var ops = new AuthenticationOperations();
+             
+                 var response = ops.LoginUser(user);
+                if (response.Success == true)
+                {
+                    var rolesReponse = ops.CheckUserRoles(user.Email);
+                    var rolesList = rolesReponse.Data.Select(r => r.RoleName);
+                    
+                    var userRole = "";
+                    foreach (var role in rolesList)
+                    {
+                        userRole += role.ToString() + ";";
+                    }
+                    var authTicket = new FormsAuthenticationTicket(1,user.Email,DateTime.Now,DateTime.Now.AddMinutes(20),true,userRole);
+                    string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+                    var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                    HttpContext.ApplicationInstance.Response.Cookies.Add(authCookie);
+                    
+
+                    return RedirectToAction("Dashboard", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", response.Message);
+                }
+            
+            return View(user);
+        }
+
+        //[HttpGet]
+        //public ActionResult Registration()
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public ActionResult Registration(User user)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var repo = new UserRepository();
+        //        repo.RegisterUser(user);
+        //    }
+        //    return RedirectToAction("Index", "Home");
+        //}
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            
+            ViewBag.message = "You have successfully logged out.";
+           return View("Login");
+        }
+
+       
+    }
+}

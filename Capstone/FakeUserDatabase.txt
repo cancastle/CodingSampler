@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TechBlog.MODELS;
+
+namespace TechBlog.TEST
+{
+    public class FakeUserDatabase
+    {
+        private static List<User> _users = new List<User>();
+
+
+        //static FakeUserDatabase()
+        //{
+        //    _users.AddRange(new[]
+        //    {
+        //        new User() {IdUser = 1, FirstName = "Sarah", LastName = "Dutkiewicz", Email = "sadukie@thesoftwareguild.com", Password = "num1boss"}, 
+        //        new User() {IdUser = 2, FirstName = "Candice", LastName = "Castle", Email = "castlecandice@gmail.com", Password = "apprentice1"}, 
+        //        new User() {IdUser = 3, FirstName = "David", LastName = "Balzer", Email = "dbalzer@thesoftwareguild.com", Password = "num2boss"}, 
+        //        new User() {IdUser = 4, FirstName = "Eric", LastName = "Wise", Email = "ewise@thesoftwareguild.com", Password = "founder1"}
+        //    });
+        //}
+
+        public List<User> GetAll()
+        {
+            return _users;
+        }
+
+        public void Add(User user)
+        {
+            if (_users.Any())
+            {
+                user.UserId = _users.Max(u => u.UserId) + 1;
+            }
+            else
+            {
+                user.UserId = 1;
+            }
+
+            _users.Add(user);
+        }
+
+        public void Delete(int id)
+        {
+            _users.RemoveAll(u => u.UserId == id);
+        }
+
+        public void Edit(User user)
+        {
+            Delete(user.UserId);
+            _users.Add(user);
+        }
+
+        public User GetById(int id)
+        {
+            return _users.Find(u => u.UserId == id);
+        }
+    }
+}

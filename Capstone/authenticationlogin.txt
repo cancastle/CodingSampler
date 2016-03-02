@@ -1,0 +1,43 @@
+@model TechBlog.MODELS.User
+@{
+    ViewBag.Title = "LogIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="padding-top: 75px">
+<legend>Login Form</legend>
+@using (Html.BeginForm("LogIn", "Authentication", null, FormMethod.Post, new { id = "LoginForm" }))
+{
+
+    <span style="color: red">
+@ViewBag.Message
+        @Html.ValidationSummary(true, "Login failed. Check your login details.")
+    </span>
+
+    <div class="form-group">
+        <fieldset>
+           
+            <div> @Html.LabelFor(u => u.Email)</div>
+
+            <div>
+                @Html.TextBoxFor(u => u.Email, new { @class = "form-control", type = "email", name = "email", id = "email" })
+            @Html.ValidationMessageFor(u => u.Email)
+        </div>
+
+        <div> @Html.LabelFor(u => u.Password)</div>
+        <div>
+            @Html.PasswordFor(u => u.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(u => u.Password)
+        </div>
+            <br/>
+        <button class="btn btn-shadow" type="submit" value="Log In">Log In</button>
+    </fieldset>
+</div>
+}
+    </div>
+
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/app/UserAccountValidation.js"></script>
+
+}

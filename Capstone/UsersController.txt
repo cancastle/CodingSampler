@@ -1,0 +1,72 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using TechBlog.BLL;
+using TechBlog.DATA;
+using TechBlog.MODELS;
+using TechBlog.TEST;
+
+namespace TechBlog.UI.Controllers
+{
+    [Authorize]
+    public class UsersController : ApiController
+    {
+        [Authorize]
+        public List<User> Get()
+        {
+           var ops = new UserOperations();
+           var response = ops.GetAllUsers();
+           return response.Data;
+        }
+
+        public User Get(int id)
+        {
+            var repo = new FakeUserDatabase();
+            return repo.GetById(id);
+        }
+
+        public HttpResponseMessage Post(User user)
+        {
+           
+            
+                var ops = new UserOperations();
+                ops.AddUser(user);
+                ops.AddRoles(user);
+            
+
+
+            var response = Request.CreateResponse(HttpStatusCode.Created, user);
+
+            string uri = Url.Link("DefaultApi", new { id = user.UserId });
+            response.Headers.Location = new Uri(uri);
+
+            return response;
+        }
+
+        public HttpResponseMessage Put(User user)
+        {
+            var ops = new UserOperations();
+            ops.EditUser(user);
+
+            var response = Request.CreateResponse(HttpStatusCode.OK, user);
+
+            string uri = Url.Link("DefaultApi", new { id = user.UserId });
+            response.Headers.Location = new Uri(uri);
+
+            return response;
+        }
+
+        public HttpResponseMessage Delete(int id)
+        {
+            var ops = new UserOperations();
+            ops.DeleteUser(id);
+
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+
+            return response;
+        }
+    }
+}

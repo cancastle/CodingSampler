@@ -1,0 +1,136 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Dapper;
+using TechBlog.DATA.Config;
+using TechBlog.MODELS;
+
+namespace TechBlog.DATA
+{
+    public class UserRepository
+    {
+        public void EditUser(User user)
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var crypto = new SimpleCrypto.PBKDF2();
+                var encrpPass = crypto.Compute(user.Password);
+                var p = new DynamicParameters();
+                p.Add("UserId", user.UserId);
+                p.Add("FirstName", user.FirstName);
+                p.Add("LastName", user.LastName);
+                p.Add("Email", user.Email);
+                p.Add("Password", encrpPass);
+                p.Add("PasswordSalt", crypto.Salt);
+                cn.Execute("EditUser", p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public void EditRole(User user)
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var p = new DynamicParameters();
+                p.Add("UserId", user.UserId);
+
+                if (user.securityRole1 == "Administrator")
+                {
+                    p.Add("RoleId", 1);
+                    p.Add("Active", 1);
+                }
+                else
+                {
+                    p.Add("RoleId", 1);
+                    p.Add("Active", 0);
+                }
+               
+                
+                cn.Execute("EditRole", p, commandType: CommandType.StoredProcedure);
+
+                if (user.securityRole2 == "Contributor")
+                {
+                    p.Add("RoleId", 2);
+                    p.Add("Active", 1);
+                }
+                else
+                {
+                    p.Add("RoleId", 2);
+                    p.Add("Active", 0);
+                }
+                cn.Execute("EditRole", p, commandType: CommandType.StoredProcedure);
+            }   
+        }
+        
+        public void DeleteUser(int id)
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var p = new DynamicParameters();
+                p.Add("UserId", id);
+                cn.Execute("DeleteUser", p, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public void RegisterUser(User user)
+        {
+
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var crypto = new SimpleCrypto.PBKDF2();
+                var encrpPass = crypto.Compute(user.Password);
+                //var users = GetAllUsers();
+                //user.UserID = users.Max(u => u.UserID) + 1;
+
+                var p = new DynamicParameters();
+                //p.Add("UserID",user.UserID);    
+                p.Add("FirstName", user.FirstName);
+                p.Add("LastName", user.LastName);
+                p.Add("Email", user.Email);
+
+                p.Add("Password", encrpPass);
+                p.Add("PasswordSalt", crypto.Salt);
+
+                cn.Execute("AddUser", p, commandType: CommandType.StoredProcedure);
+
+
+            }
+        }
+        public void AddUserRoles(User user)
+        {
+
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var p = new DynamicParameters();
+                //p.Add("UserID",user.UserID);    
+
+                p.Add("Email", user.Email);
+                p.Add("SecurityRole", user.securityRole1);
+                p.Add("Active", user.Active1);
+
+
+                cn.Execute("AddRoles", p, commandType: CommandType.StoredProcedure);
+
+                p.Add("Email", user.Email);
+                p.Add("SecurityRole", user.securityRole2);
+                p.Add("Active", user.Active2);
+
+
+                cn.Execute("AddRoles", p, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public List<User> GetAllUsers()
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                
+
+                var users = cn.Query<User>("GetAllUsers", commandType: CommandType.StoredProcedure).ToList();
+
+                return users;
+            }
+        }
+    }
+}

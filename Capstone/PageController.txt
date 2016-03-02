@@ -1,0 +1,83 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web;
+using System.Web.Http;
+using System.Web.Security;
+using TechBlog.BLL;
+using TechBlog.MODELS;
+
+namespace TechBlog.UI.Controllers
+{
+    public class PageController : ApiController
+    {
+        public List<StaticPage> Get()
+        {
+            var ops = new PageOperations();
+         
+            
+            var response = new Response<List<StaticPage>>();
+            
+
+
+                response = ops.GetAllPages();
+            
+
+            
+
+
+            return response.Data;
+        }
+        public HttpResponseMessage Post(StaticPage page)
+        {
+            //if (ModelState.IsValid)
+            //{
+           
+            page.Email = HttpContext.Current.User.Identity.Name;
+
+            
+            var ops = new PageOperations();
+            ops.AddPage(page);
+
+            //ops.AddUser(user);
+            //ops.AddRoles(user);
+
+
+
+            var response = Request.CreateResponse(HttpStatusCode.Created, page);
+
+            string uri = Url.Link("DefaultApi", new { id = page.StaticPageId });
+            response.Headers.Location = new Uri(uri);
+
+            return response;
+        }
+
+        public HttpResponseMessage Put(StaticPage page)
+        {
+            
+            page.Email = HttpContext.Current.User.Identity.Name;
+            page.LastModified = DateTime.Now;
+
+            var ops = new PageOperations();
+            ops.EditPost(page);
+
+            var response = Request.CreateResponse(HttpStatusCode.OK, page);
+
+            string uri = Url.Link("DefaultApi", new { id = page.StaticPageId });
+            response.Headers.Location = new Uri(uri);
+
+            return response;
+        }
+        public HttpResponseMessage Put(int id)
+        {
+            var ops = new PageOperations();
+            ops.DeletePage(id);
+
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+
+            return response;
+        }
+    }
+}

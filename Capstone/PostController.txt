@@ -1,0 +1,136 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web;
+using System.Web.Http;
+using System.Web.Mvc;
+using System.Web.Security;
+using System.Web.UI.WebControls;
+using Microsoft.AspNet.Identity;
+using TechBlog.BLL;
+using TechBlog.MODELS;
+
+namespace TechBlog.UI.Controllers
+{
+    public class PostController : ApiController
+    {
+        public List<BlogPost> Get()
+        {var ops = new PostOperations();
+            var context = HttpContext.Current;
+            var authenticationTicket = ((FormsIdentity)context.User.Identity).Ticket;
+            var response = new Response<List<BlogPost>>();
+            if (authenticationTicket.UserData.Contains("Administrator"))
+            {
+
+
+                 response = ops.GetAllPosts();
+            }
+
+            else
+            {
+                response = ops.GetUserPosts(authenticationTicket.Name);
+            }
+
+          
+            
+            return response.Data;
+        }
+
+        public HttpResponseMessage Post(BlogPost post)
+        {
+            //if (ModelState.IsValid)
+            //{
+            var context = HttpContext.Current;
+            var authenticationTicket = ((FormsIdentity)context.User.Identity).Ticket;
+          var tagsList = post.TagsString.Split(',').ToList();
+            post.Tags = new List<Tags>();
+            foreach (var tag in tagsList)
+            { var newTag = new Tags();
+            newTag.TagName = tag;
+                var lowerTag = newTag.TagName.ToLower();
+                newTag.TagName = lowerTag;
+               
+                post.Tags.Add(newTag);
+
+            }
+         
+          if ( authenticationTicket.UserData.Contains("Administrator"))
+            {
+                post.StatusId = 1;
+            }
+
+            else
+            {
+                post.StatusId = 3;
+            }
+          post.Email =  HttpContext.Current.User.Identity.Name;
+        post.Date = DateTime.Now;
+            var ops= new PostOperations();
+            ops.AddPost(post);
+
+            //ops.AddUser(user);
+            //ops.AddRoles(user);
+
+
+
+            var response = Request.CreateResponse(HttpStatusCode.Created, post);
+
+            string uri = Url.Link("DefaultApi", new { id = post.BlogPostId});
+            response.Headers.Location = new Uri(uri);
+
+            return response;
+        }
+
+        public HttpResponseMessage Put(int id)
+        {
+            var ops = new PostOperations();
+            ops.DeletePost(id);
+
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+
+            return response;
+        }
+
+        public HttpResponseMessage Put(BlogPost post)
+        {
+            var context = HttpContext.Current;
+            var authenticationTicket = ((FormsIdentity)context.User.Identity).Ticket;
+            var tagsList = post.TagsString.Split(',').ToList();
+            post.Tags = new List<Tags>();
+            foreach (var tag in tagsList)
+            {
+                var newTag = new Tags();
+
+                newTag.TagName = tag;
+                post.Tags.Add(newTag);
+
+            }
+            if (authenticationTicket.UserData.Contains("Administrator"))
+            {
+                post.StatusId = 1;
+            }
+
+            else
+            {
+                post.StatusId = 3;
+            }
+            post.Email = HttpContext.Current.User.Identity.Name;
+            post.Date = DateTime.Now;
+
+            var ops = new PostOperations();
+            ops.EditPost(post);
+
+            var response = Request.CreateResponse(HttpStatusCode.OK, post);
+
+            string uri = Url.Link("DefaultApi", new { id = post.UserId });
+            response.Headers.Location = new Uri(uri);
+
+            return response;
+        }
+
+
+       
+    }
+}

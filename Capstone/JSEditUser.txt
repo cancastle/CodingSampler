@@ -1,0 +1,122 @@
+$('#edit_user2').on('show.bs.modal', function (e) {
+    var userId = $(e.relatedTarget).data('user-id');
+    $(e.currentTarget).find('input[name="userIDforEdit"]').val(userId);
+    var firstname = $(e.relatedTarget).data('firstname');
+    $(e.currentTarget).find('input[name="edFirstName"]').val(firstname);
+    $(e.currentTarget).find('input[value="edFirstName"]').val(firstname);
+    var lastname = $(e.relatedTarget).data('lastname');
+    $(e.currentTarget).find('input[name="edLastName"]').val(lastname);
+    $(e.currentTarget).find('input[value="edLastName"]').val(lastname);
+    var email = $(e.relatedTarget).data('email');
+    $(e.currentTarget).find('input[name="edEmail"]').val(email);
+    $(e.currentTarget).find('input[value="edEmail"]').val(email);
+    var password = $(e.relatedTarget).data('password');
+    $(e.currentTarget).find('input[name="edPassword"]').val(password);
+    $(e.currentTarget).find('input[value="edPassword"]').val(password);
+    var passwordsalt = $(e.relatedTarget).data('passwordsalt');
+    $(e.currentTarget).find('input[name="edPasswordSalt"]').val(passwordsalt);
+    $(e.currentTarget).find('input[value="edPasswordSalt"]').val(passwordsalt);
+    var securityRole1 = $(e.relatedTarget).data('securityrole1'); 
+    if (securityRole1) {
+        $("#edSecurityRole1").prop('checked', true);
+    }
+    else {
+        $("#edSecurityRole1").prop('checked', false);
+    }
+
+    var securityRole2 = $(e.relatedTarget).data('securityrole2');
+    if (securityRole2) {
+        $("#edSecurityRole2").prop('checked', true);
+    }
+    else {
+        $("#edSecurityRole2").prop('checked', false);
+    }
+
+    function createEditUserVal() {
+        $.validator.setDefaults({
+            errorClass: 'text-danger',
+            errorElement: 'span'
+        });
+        $("#editUser").validate({
+            rules: {
+                "edFirstName": {
+                    required: true
+                },
+                "edLastName": {
+                    required: true
+                },
+                "edEmail": {
+                    required: true,
+                    email: true
+                }
+            },
+
+            messages: {
+                "edFirstName": {
+                    required: "Please enter a first name"
+                },
+                "edLastName": {
+                    required: "Please enter a last name"
+                },
+                "edEmail": {
+                    required: "Please enter a valid email address"
+                }
+            }
+
+        });
+    };
+
+    $('#btnSaveEditUser2').click(function () {
+        createEditUserVal();
+        var isValid = $('#editUser').valid();
+        if (!isValid) {
+            return;
+        }
+    var user = {}
+    var newPassword = "";
+    user.UserId = $('#userIDforEdit').val();
+    user.FirstName = $('#edFirstName').val();
+    user.LastName = $('#edLastName').val();
+    user.Email = $('#edEmail').val();
+    user.Password = $('#edPassword').val();
+    user.PasswordSalt = $('#edPasswordSalt').val();
+    newPassword = $('#edNewPassword').val();
+
+    if (newPassword) {
+        user.Password = newPassword;
+    }
+   
+    //we have to deal with the fact that there can be more than one role as per Dave
+
+    $('input:checkbox[name=edSecurityRole1]').each(function () {
+        if ($(this).is(':checked'))
+            user.securityRole1 = $('#edSecurityRole1').val();
+       
+    });
+
+    $('input:checkbox[name=edSecurityRole2]').each(function () {
+        if ($(this).is(':checked'))
+            user.securityRole2 = $('#edSecurityRole2').val();
+       
+    });
+    $.ajax({
+        url: uri,
+        type: 'PUT',
+        dataType: 'json',
+        data: user,
+        success: function (data, textStatus, xhr) {
+            console.log(data);
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log('Error in Operation');
+        }
+    })
+        .done(function () {
+            loadUsers();
+            $('#edit_user2').modal('hide');
+        });
+    //.fail(function(jqXhr, status, er) {
+    //    alert(status + ' - ' + err);
+    //});
+    });
+});

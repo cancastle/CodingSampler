@@ -1,0 +1,136 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Dapper;
+using TechBlog.DATA.Config;
+using TechBlog.MODELS;
+
+namespace TechBlog.DATA
+{
+    public class AuthenticationRepository
+    {
+        public List<User> GetAllUsers()
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var users = cn.Query<User>("SELECT * FROM [User]").ToList();
+
+                return users;
+            }
+        }
+
+        public User GetOneUser(string email)
+        {
+            var users = GetAllUsers();
+
+            var user = users.FirstOrDefault(u => u.Email == email);
+
+            return user;
+        }
+
+        //public void RegisterUser(User user)
+        //{
+
+        //    using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+        //    {
+        //        var crypto = new SimpleCrypto.PBKDF2();
+        //        var encrpPass = crypto.Compute(user.Password);
+        //        //var users = GetAllUsers();
+        //        //user.UserID = users.Max(u => u.UserID) + 1;
+
+        //        var p = new DynamicParameters();
+        //        //p.Add("UserID",user.UserID);    
+        //        p.Add("FirstName", user.FirstName);
+        //        p.Add("LastName", user.LastName);
+        //        p.Add("Email", user.Email);
+
+        //        p.Add("Password", encrpPass);
+        //        p.Add("PasswordSalt", crypto.Salt);
+
+        //        cn.Execute("AddUser", p, commandType: CommandType.StoredProcedure);
+
+
+        //    }
+        //}
+
+        public bool IsUserValid(string email, string password)
+        {
+            var crypto = new SimpleCrypto.PBKDF2();
+            bool isValid = false;
+            using (SqlConnection db = new SqlConnection(Settings.ConnectionString))
+            {
+                var users = GetAllUsers();
+
+                var user = users.FirstOrDefault(u => u.Email == email);
+
+                if (user != null)
+                {
+                    if (user.Password == crypto.Compute(password, user.PasswordSalt))
+                    {
+                        isValid = true;
+                    }
+                }
+            }
+            return isValid;
+        }
+
+        public List<UserRoles> GetUserRoles(string email)
+        {
+            var userRole = new List<UserRoles>();
+
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+
+
+                var p = new DynamicParameters();
+                //p.Add("UserID",user.UserID);    
+                p.Add("Email", email);
+
+
+                userRole = cn.Query<UserRoles>("CheckUserRole", p, commandType: CommandType.StoredProcedure).ToList();
+
+
+            }
+            return userRole;
+        }
+
+        //public void AddUserRoles(User user)
+        //{
+
+        //    using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+        //    {
+
+
+
+
+        //        var p = new DynamicParameters();
+        //        //p.Add("UserID",user.UserID);    
+                
+        //            p.Add("Email", user.Email);
+        //            p.Add("SecurityRole", user.securityRole1);
+        //            p.Add("Active", user.Active1);
+
+
+        //            cn.Execute("AddRoles", p, commandType: CommandType.StoredProcedure);
+
+        //            p.Add("Email", user.Email);
+        //            p.Add("SecurityRole", user.securityRole2);
+
+
+        //            cn.Execute("AddRoles", p, commandType: CommandType.StoredProcedure);
+                    
+        //            p.Add("Active", user.Active2);
+
+
+        //            cn.Execute("AddRoles", p, commandType: CommandType.StoredProcedure);
+                    
+               
+
+        //    }
+        //}
+    }
+}

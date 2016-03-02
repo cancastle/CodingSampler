@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+
+namespace TechBlog.MODELS
+{
+    public class User
+    {
+        public int UserId { get; set; }
+        [Required]
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+        [Required]
+        public string Password { get; set; }
+
+        public string securityRole1 { get; set; }
+        //changing int to bool
+        public bool Active1 { get; set; }
+        public bool Active2 { get; set; }
+        public string securityRole2 { get; set; }
+        public string PasswordSalt { get; set; }
+        public bool DeletedUser { get; set; }
+    }
+}

@@ -1,0 +1,89 @@
+$(document).ready(function () {
+    $('#btnShowAddUser').click(function () {
+        $('#addUserModal').modal('show');
+    });
+
+
+    function createUserVal() {
+        $.validator.setDefaults({
+            errorClass: 'text-danger',
+            errorElement: 'span'
+        });
+    $("#createUser").validate({
+        rules: {
+            "firstName": {
+                required: true
+            },
+            "lastName": {
+                required: true
+            },
+            "email": {
+                required: true,
+                email: true
+            },
+            "password": {
+                required: true 
+            }
+        },
+
+        messages: {
+                "firstName": {
+                    required: "Please enter your first name"
+                },
+                "lastName": {
+                    required: "Please enter your last name"
+                },
+                "email": {
+                    required: "Please enter a valid email address"
+                },
+                "password": {
+                    required: "Please provide a password"
+
+                }
+            }
+
+        });
+};
+
+
+    $('#btnSaveUser').click(function () {
+        createUserVal();
+        var isValid = $('#createUser').valid();
+        if (!isValid) {
+            return;
+        }
+        
+        var user = {}
+
+        user.FirstName = $('#firstName').val();
+        user.LastName = $('#lastName').val();
+        user.Email = $('#email').val();
+        user.Password = $('#password').val();
+
+        $('input:checkbox[name=Active1]').each(function () {
+            if ($(this).is(':checked'))
+                user.Active1 = $('#Active1').val();
+        });
+
+        $('input:checkbox[name=Active2]').each(function () {
+            if ($(this).is(':checked'))
+                user.Active2 = $('#Active2').val();
+        });
+
+
+        $.post(uri, user)
+            .done(function () {
+                loadUsers();
+                $('#addUserModal').modal('hide');
+            })
+            .fail(function (jqXhr, status, err) {
+                alert(status + ' - ' + err);
+            });
+
+    });
+
+
+
+   
+
+});

@@ -1,0 +1,132 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TechBlog.DATA;
+using TechBlog.MODELS;
+
+namespace TechBlog.BLL
+{
+    public class UserOperations
+    {
+        public Response<string> EditUser(User user)
+        {
+            var repo = new UserRepository();
+            var response = new Response<string>();
+            repo.EditUser(user);
+            repo.EditRole(user);
+
+            try
+            {
+                response.Success = true;
+                response.Message = "Edits have been saved";
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+
+        public Response<string> DeleteUser(int id)
+        {
+            var repo = new UserRepository();
+            var response = new Response<string>();
+            repo.DeleteUser(id);
+
+            try
+            {
+                response.Success = true;
+                response.Message = "User was successfully deleted";
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+
+            return response;
+        }
+        public Response<string> AddUser(User user)
+        {
+            var repo = new UserRepository();
+            var response = new Response<string>();
+            repo.RegisterUser(user);
+            try
+            {
+                response.Success = true;
+                response.Message = "User has been added";
+
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+
+
+            }
+
+            return response;
+
+        }
+
+        
+        public Response<string> AddRoles(User user)
+        {
+            var repo = new UserRepository();
+            var response = new Response<string>();
+            //initializes security roles for this user, otherwise they are null in db
+            user.securityRole1 = "Administrator";
+            user.securityRole2 = "Contributor";
+            repo.AddUserRoles(user);
+
+            return response;
+        }
+
+        public Response<List<User>> GetAllUsers()
+        {
+            var repo = new UserRepository();
+            var response = new Response<List<User>>();
+            var userList1 = repo.GetAllUsers();
+            var userList = userList1.Where(u => u.DeletedUser != true);
+            //filter for user.DeletedUser != true
+
+            try
+            {
+                foreach (var user in userList)
+                {
+                    if (user.Active1)
+                    {
+                        user.securityRole1 = "Administrator";
+                    }
+
+                    if (user.Active2)
+                    {
+                        user.securityRole2 = "Contributor";
+                    }
+
+                }
+                response.Success = true;
+                //need to cast Generic.IEnumerable to Generic.List
+                var userListCast = userList.ToList();
+                response.Data = userListCast;
+
+
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+
+
+            }
+
+            return response;
+
+        }
+
+
+    }
+}

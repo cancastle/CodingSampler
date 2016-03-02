@@ -1,0 +1,34 @@
+var uri = '/api/page/';
+
+$(document).ready(function () {
+    loadPages();
+});
+
+function loadPages() {
+    $.getJSON(uri)
+        .done(function (data) {
+
+            $('#pages tbody tr').remove();
+            $.each(data, function (index, page) {
+                $(createRow(page)).appendTo($('#pages tbody'));
+            });
+        });
+}
+
+function createRow(page) {
+    var pageURL = "../" + page.URLSlug;
+    //var justDate = new Date(page.Date);
+    //post.Date = (justDate.getFullYear()) + '-' + ('0' + (justDate.getMonth() + 1)).slice(-2) + '-' + ('0' + (justDate.getDate())).slice(-2);
+
+    var createDate = new Date(page.DateCreated);
+    page.DateCreated = (createDate.getFullYear()) + '-' + ('0' + (createDate.getMonth() + 1)).slice(-2) + '-' + ('0' + (createDate.getDate())).slice(-2);
+    var modDate = new Date(page.LastModified);
+    page.LastModified = (modDate.getFullYear()) + '-' + ('0' + (modDate.getMonth() + 1)).slice(-2) + '-' + ('0' + (modDate.getDate())).slice(-2);
+    return '<tr><td>' + page.PageTitle + '</td><td>' + page.DateCreated + '</td><td>' + page.Email + '</td><td>' + page.BpStatusName + '</td><td>' + page.LastModified + '</td><td>' + page.URLSlug +
+     '</td><td>'
+        + '<a href="' + pageURL + '" class="btn btn-xs btn-success">View</a>' + '</td><td>'
+        + '<a href="#edit_page" class="btn btn-xs btn-warning" data-toggle="modal" data-page-id=\'' + page.StaticPageId + '\' data-pagetitle=\'' + page.PageTitle + '\' data-htmlcontent=\'' + page.PageHtml + '\'data-datecreated=\'' + page.DateCreated + '\'data-statusname=\'' + page.BpStatusName + '\' data-urlslug=\'' + page.URLSlug + '\' >Edit</a>'
+        + '</td><td>'
+        + '<a href="#deletePageModal" class="btn btn-xs btn-danger" data-toggle="modal" data-page-id=\'' + page.StaticPageId + '\' data-pagetitle=\'' + page.PageTitle + '\' >Delete</a>'
+        + '</td></tr>';
+}

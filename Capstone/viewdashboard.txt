@@ -1,0 +1,88 @@
+@model TechBlog.UI.Models.DashboardVM
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+@Html.Partial("_ApprovePost")
+@Html.Partial("_EditPosts")
+<h2>Dashboard</h2>
+
+<div class="row">
+     @if (Model.Admin == true && !Model.Posts.Where(c => c.BpStatusName == "Pending").Any())
+    {<h3>Pending Posts</h3>
+    <div class="alert alert-danger" role="alert"><p>There are no posts to display</p></div>
+
+    }
+    @if (Model.Admin == true && Model.Posts.Where(c => c.BpStatusName == "Pending").Any())
+        {<h3>Pending Posts</h3>
+            <table id="appPosts" class="table table-striped">
+                <thead>
+                <tr>
+
+                    <th>Title</th>
+                  
+                    <th>Date Created</th>
+                   
+                    <th>User</th>
+                    <th>Status</th>
+
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+
+
+        }
+       
+        @if (Model.Admin == false && Model.Posts.Where(c => c.BpStatusName == "Rejected").Count() <= 0)
+        {<h3>Rejected Posts</h3>
+    <div class="alert alert-danger" role="alert"><p>There are no posts to display</p></div>
+           
+        }
+        @if (Model.Admin == false)
+        { <h3>Rejected Posts</h3>
+        <table id="posts" class="table table-striped">
+            <thead>
+                <tr>
+
+                    <th>Title</th>
+                    <th>Date Created</th>
+                    <th>User</th>
+                    <th>Reason Rejected</th>
+                    <th></th>
+                    <th></th>
+
+
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+    }
+
+  
+
+
+
+
+
+
+
+
+
+
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/app/loadApprovePosts.js"></script>
+    <script src="~/Scripts/app/editPostApproval.js"></script>
+
+    <script src="~/Scripts/app/loadRejectPost.js"></script>
+    <script src="~/Scripts/app/dashEditPost.js"></script>
+<script src="~/Scripts/tiny_mce/tiny_mce.js" type="text/javascript"></script>
+    <script src="~/Scripts/App/JHomeIndex.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+ 
+}
+

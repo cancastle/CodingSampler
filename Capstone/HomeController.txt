@@ -1,0 +1,121 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Security;
+using TechBlog.BLL;
+using TechBlog.DATA;
+using TechBlog.UI.Models;
+
+namespace TechBlog.UI.Controllers
+{
+    public class HomeController : Controller
+    {
+        // GET: Home
+        public ActionResult Index()
+        {
+            var repo = new PostRepository();
+            var model = repo.GetLast5BlogPosts();
+            return View(model);
+        }
+        [Authorize]
+        public ActionResult Dashboard()
+        {
+           var ops = new PostOperations();
+            var posts = ops.GetAllPosts();
+            var model = new DashboardVM();
+            model.Posts = posts.Data;
+            var context = System.Web.HttpContext.Current;
+            var authenticationTicket = ((FormsIdentity)context.User.Identity).Ticket;
+
+            if (authenticationTicket.UserData.Contains("Administrator"))
+            {
+                model.Admin = true;
+            }
+
+            else
+            {
+                var myPosts = model.Posts.Where(c => c.Email == User.Identity.Name).ToList();
+                model.Posts = myPosts;
+                model.Admin = false;
+            }
+            return View(model);
+        }
+       [Authorize(Roles = "Administrator")]
+        public ActionResult ManageUsers()
+        {
+            return View();
+        }
+
+       [Authorize]
+       public ActionResult ManagePosts()
+       {
+           return View();
+       }
+
+       public ActionResult ViewPost(string URLSlug)
+       {
+           var ops = new PostOperations();
+           var response = ops.GetPost(URLSlug);
+           var post = response.Data;
+
+           return View(post);
+       }
+       public ActionResult AddPost()
+       {
+
+
+           return View();
+       }
+
+        [Authorize(Roles = "Administrator")]
+       public ActionResult ManagePages()
+       {
+           return View();
+       }
+        [Authorize(Roles = "Administrator")]
+       public ActionResult AddPage()
+       {
+
+
+           return View();
+       }
+
+       public ActionResult ViewPage(string URLSlug)
+       {
+           var ops = new PageOperations();
+           var response = ops.GetPage(URLSlug);
+           var post = response.Data;
+
+           return View(post);
+       }
+        [ChildActionOnly]
+       public ActionResult NavBar()
+       {
+           var ops = new PageOperations();
+           var pages = ops.GetAllPages().Data.Where(c=> c.BpStatusName == "Submitted").ToList();
+         
+           return PartialView(pages);
+       }
+
+        public ActionResult ViewPostTags(string tag)
+        {
+           tag = tag.ToLower();
+            var ops = new PostOperations();
+            var response = ops.GetPostByTags(tag);
+            ViewBag.tag = tag.ToUpper();
+            var post = response.Data;
+
+            return View(post);
+        }
+        [ChildActionOnly]
+        public ActionResult TagList()
+        {
+            var repo = new PostRepository();
+            var tags = repo.GetAllTags();
+
+            return PartialView(tags);
+        }
+    }
+}

@@ -1,0 +1,155 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using TechBlog.DATA;
+using TechBlog.MODELS;
+
+namespace TechBlog.BLL
+{
+    public class PageOperations
+    {
+        public Response<List<StaticPage>> GetAllPages()
+        {
+            var repo = new PageRepository();
+            var response = new Response<List<StaticPage>>();
+            var pages = repo.GetAllPages();
+
+
+            try
+            {
+
+                response.Success = true;
+                response.Data = pages;
+
+
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+
+
+            }
+
+            return response;
+
+        }
+
+        public Response<string> AddPage(StaticPage page)
+        {
+            var repo = new PageRepository();
+            var response = new Response<string>();
+            var statusList = repo.GetStatus();
+            var statusId = statusList.FirstOrDefault(s => s.BpStatusName == page.BpStatusName).StatusId;
+            page.StatusId = statusId;
+            page.DateCreated = DateTime.Now;
+            page.LastModified = DateTime.Now;
+            var authRepo = new AuthenticationRepository();
+            User current = authRepo.GetOneUser(page.Email);
+            page.UserId = current.UserId;
+
+            var url = Regex.Replace(page.URLSlug, @"[^\w\.@\- ]", "");
+            url = url.Replace(".", "");
+
+
+            page.URLSlug = url.Replace(" ", "_");
+            repo.AddPage(page);
+            try
+            {
+                response.Success = true;
+                response.Message = "Page has been added";
+
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+
+
+            }
+
+            return response;
+        }
+
+        public Response<StaticPage> GetPage(string URLSlug)
+        {
+            var repo = new PageRepository();
+            var response = new Response<StaticPage>();
+            var page = repo.GetPage(URLSlug);
+
+            try
+            {
+                response.Success = true;
+                response.Data = page;
+
+
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+
+
+            }
+
+            return response;
+        }
+
+        public Response<string> EditPost(StaticPage page)
+        {
+            var repo = new PageRepository();
+            var response = new Response<string>();
+            var authRepo = new AuthenticationRepository();
+            User current = authRepo.GetOneUser(page.Email);
+            page.UserId= current.UserId;
+
+            var url = Regex.Replace(page.URLSlug, @"[^\w\.@\- ]", "");
+            url = url.Replace(".", "");
+
+
+            page.URLSlug = url.Replace(" ", "_");
+            var statusList = repo.GetStatus();
+            var statusId = statusList.FirstOrDefault(s => s.BpStatusName == page.BpStatusName).StatusId;
+            page.StatusId = statusId;
+            repo.EditPage(page);
+            try
+            {
+                response.Success = true;
+                response.Message = "Page has been added";
+
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+
+
+            }
+
+            return response;
+        }
+
+        public Response<string> DeletePage(int id)
+        {
+            var repo = new PageRepository();
+            var response = new Response<string>();
+            repo.DeletePage(id);
+
+            try
+            {
+                response.Success = true;
+                response.Message = "Page was successfully deleted";
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+
+            return response;
+        }
+    }
+}

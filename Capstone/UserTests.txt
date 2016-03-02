@@ -1,0 +1,90 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NUnit.Framework;
+using TechBlog.BLL;
+using TechBlog.DATA;
+using TechBlog.MODELS;
+
+namespace TechBlog.TEST
+{
+    [TestFixture]
+    public class UserTests
+    {
+        [Test]
+        public void AddUser()
+        {
+            var userToAdd = new User();
+            userToAdd.FirstName = "Jeb";
+            userToAdd.LastName = "Bush";
+            userToAdd.Email = "jb@rnc.com";
+            userToAdd.Password = "fdhji78";
+            userToAdd.Active1 = true;
+            userToAdd.Active2 = true;
+
+            var ops = new UserOperations();
+            ops.AddUser(userToAdd);
+
+            var repo = new AuthenticationRepository();
+            var result = repo.GetOneUser("jb@rnc.com");
+
+            Assert.AreEqual(result.FirstName, "Jeb");
+        }
+
+        [Test]
+        public void EditUser1()
+        {
+            var repo = new AuthenticationRepository();
+            var u = repo.GetOneUser("jb@rnc.com");
+            u.FirstName = "Jebediah";
+            u.LastName = "Busch";
+            u.Password = "fdhji78";
+            u.securityRole1 = "Administrator";
+            u.securityRole2 = "Contributor";
+            var ops = new UserOperations();
+            ops.EditUser(u);
+
+            var result = repo.GetOneUser("jb@rnc.com");
+
+            Assert.AreEqual(result.FirstName, "Jebediah");
+        }
+
+       
+
+        [Test]
+        public void EditRole()
+        {
+            var repo = new AuthenticationRepository();
+            var u = repo.GetOneUser("test@test.com");
+            u.FirstName = "test";
+            u.LastName = "test";
+            u.Password = "fhji78";
+            u.securityRole1 = "Administrator";
+            u.securityRole2 = "Contributor";
+            u.Active1 = true;
+            u.Active2 = true;
+            var ops = new UserOperations();
+            ops.EditUser(u);
+
+            var result = repo.GetOneUser("test@test.com");
+
+            Assert.AreEqual(result.Active1, 1);
+        }
+
+        //These deletes need to be done by looking at the data base to get the id you want to get rid of
+        [Test]
+        public void DeleteUser()
+        {
+            int id = 51;
+            var ops = new UserOperations();
+            ops.DeleteUser(id);
+            var repo = new AuthenticationRepository();
+
+            var result = repo.GetOneUser("jb@rnc.com");
+            Assert.AreNotEqual(result.FirstName, "Jeb");
+        }  
+
+    }
+}

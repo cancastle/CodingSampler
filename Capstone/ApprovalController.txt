@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web;
+using System.Web.Http;
+using System.Web.Security;
+using TechBlog.BLL;
+using TechBlog.MODELS;
+
+namespace TechBlog.UI.Controllers
+{
+    public class ApprovalController : ApiController
+    {
+        public List<BlogPost> Get()
+        {
+            var ops = new PostOperations();
+            var context = HttpContext.Current;
+            var authenticationTicket = ((FormsIdentity)context.User.Identity).Ticket;
+            var response = new Response<List<BlogPost>>();
+            if (authenticationTicket.UserData.Contains("Administrator"))
+            {
+
+
+                 response = ops.GetAllPosts();
+                 response.Data = response.Data.Where(c => c.BpStatusName == "Pending").ToList();
+
+            }
+
+            else
+            {
+                response = ops.GetUserPosts(authenticationTicket.Name);
+            }
+
+
+
+            return response.Data;
+        }
+
+        public HttpResponseMessage Put(BlogPost post)
+        {
+           
+            var ops = new PostOperations();
+            ops.UpdateStatus(post);
+
+            var response = Request.CreateResponse(HttpStatusCode.OK, post);
+
+            string uri = Url.Link("DefaultApi", new { id = post.UserId });
+            response.Headers.Location = new Uri(uri);
+
+            return response;
+        }
+    }
+}

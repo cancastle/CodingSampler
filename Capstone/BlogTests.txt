@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NUnit.Framework;
+using TechBlog.BLL;
+using TechBlog.MODELS;
+
+namespace TechBlog.TEST
+{
+    [TestFixture]
+    public class BlogTests
+    {
+        [Test]
+        public void AddBlogPost()
+        {
+            var blogToAdd = new BlogPost();
+            blogToAdd.PostTitle = "Test to create";
+            blogToAdd.URLSlug = "slug";
+            var ops = new PostOperations();
+            ops.AddPost(blogToAdd);
+
+            var result = ops.GetPost(blogToAdd.URLSlug);
+            Assert.AreEqual(result.Data.PostTitle, "Test to create");
+        }
+
+        [Test]
+        public void EditBlogPost()
+        {
+            var ops = new PostOperations();
+            var blogForEdit = ops.GetPost("slug");
+            blogForEdit.Data.HtmlContent = "Test Content";
+            var editedBlog = blogForEdit.Data;
+            ops.EditPost(editedBlog);
+
+            var result = ops.GetPost("slug");
+            Assert.AreEqual(result.Data.HtmlContent, "Test Content");
+        }
+
+        [Test]
+        public void DeleteBlogPostPart1()
+        {
+            var ops = new PostOperations();
+            var postToAddThenDelete = new BlogPost();
+            postToAddThenDelete.PostTitle = "Add1";
+            postToAddThenDelete.URLSlug = "slug1";
+            postToAddThenDelete.HtmlContent = "Checking for the test";
+            ops.AddPost(postToAddThenDelete);
+
+            //check to see that this is added 
+
+            var result = ops.GetPost("slug1");
+            Assert.AreEqual(result.Data.HtmlContent, "Checking for the test");
+        }
+
+        [Test]
+        public void DeleteBlogPostPart2()
+        {
+            var ops = new PostOperations();
+            var result1 = ops.GetPost("slug1");
+            var postToDelete = new BlogPost();
+            result1.Data = postToDelete;
+            int id = Int32.Parse(postToDelete.BlogPostId);
+            ops.DeletePost(id);
+            var result = ops.GetPost("slug1");
+            Assert.AreNotEqual(result.Data.HtmlContent, "Checking for the test");
+        }
+    }
+}

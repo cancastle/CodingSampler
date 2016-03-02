@@ -1,0 +1,243 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using TechBlog.DATA;
+using TechBlog.MODELS;
+
+namespace TechBlog.BLL
+{
+   public class PostOperations
+    {
+       public Response<List<BlogPost>> GetAllPosts()
+       {
+           var repo = new PostRepository();
+           var response = new Response<List<BlogPost>>();
+           var posts = repo.GetAllPosts();
+
+
+           try
+           {
+              
+               response.Success = true;
+              
+               response.Data = posts;
+
+
+           }
+           catch (Exception ex)
+           {
+               response.Success = false;
+               response.Message = ex.Message;
+
+
+           }
+
+           return response;
+
+       }
+
+       public Response<string> AddPost(BlogPost post)
+       {
+           var repo = new PostRepository();
+           var response = new Response<string>();
+           var authRepo = new AuthenticationRepository();
+         User current =  authRepo.GetOneUser(post.Email);
+           post.UserId = current.UserId;
+           
+            var url = Regex.Replace(post.PostTitle, @"[^\w\.@\- ]", "");
+          url= url.Replace(".", "");
+           
+
+           post.URLSlug = url.Replace(" ", "_");
+           repo.AddPost(post);
+           try
+           {
+               response.Success = true;
+               response.Message = "Post has been added";
+
+           }
+           catch (Exception ex)
+           {
+               response.Success = false;
+               response.Message = ex.Message;
+
+
+           }
+
+           return response;
+
+       }
+
+       public Response<List<BlogPost>> GetUserPosts(string email)
+       {
+           var repo = new PostRepository();
+           var response = new Response<List<BlogPost>>();
+           var postList = repo.GetUserPosts(email);
+
+           try
+           {
+               response.Success = true;
+               response.Data = postList;
+
+
+           }
+           catch (Exception ex)
+           {
+               response.Success = false;
+               response.Message = ex.Message;
+
+
+           }
+
+           return response;
+
+       }
+
+       public Response<BlogPost> GetPost(string URLSlug)
+       {
+           var repo = new PostRepository();
+           var response = new Response<BlogPost>();
+           var post = repo.GetPost(URLSlug);
+
+           try
+           {
+               response.Success = true;
+               response.Data = post;
+
+
+           }
+           catch (Exception ex)
+           {
+               response.Success = false;
+               response.Message = ex.Message;
+
+
+           }
+
+           return response;
+       }
+
+       public Response<string> DeletePost(int id)
+       {
+           var repo = new PostRepository();
+           var response = new Response<string>();
+           repo.DeletePost(id);
+
+           try
+           {
+               response.Success = true;
+               response.Message = "Post was successfully deleted";
+           }
+           catch (Exception ex)
+           {
+               response.Success = false;
+               response.Message = ex.Message;
+           }
+
+           return response;
+       }
+
+       public Response<string> UpdateStatus(BlogPost post)
+       {
+           var repo = new PostRepository();
+           var response = new Response<string>();
+           repo.UpdateStatus(post);
+
+           try
+           {
+               response.Success = true;
+               response.Message = "Post status was successfully updated";
+           }
+           catch (Exception ex)
+           {
+               response.Success = false;
+               response.Message = ex.Message;
+           }
+
+           return response;
+       }
+
+       public Response<string> EditPost(BlogPost post)
+       {
+           var repo = new PostRepository();
+           var response = new Response<string>();
+           var authRepo = new AuthenticationRepository();
+           User current = authRepo.GetOneUser(post.Email);
+           post.UserId = current.UserId;
+
+           var url = Regex.Replace(post.PostTitle, @"[^\w\.@\- ]", "");
+           url = url.Replace(".", "");
+
+
+           post.URLSlug = url.Replace(" ", "_");
+           repo.EditPost(post);
+           try
+           {
+               response.Success = true;
+               response.Message = "Post has been added";
+
+           }
+           catch (Exception ex)
+           {
+               response.Success = false;
+               response.Message = ex.Message;
+
+
+           }
+
+           return response;
+
+       }
+
+       public Response<List<Tags>> GetTags()
+       {
+           var repo = new PostRepository();
+           var response = new Response<List<Tags>>();
+           var tags = repo.GetTags();
+
+           try
+           {
+               response.Success = true;
+               response.Data = tags;
+
+
+           }
+           catch (Exception ex)
+           {
+               response.Success = false;
+               response.Message = ex.Message;
+
+
+           }
+
+           return response;
+       }
+
+       public Response<List<BlogPost>> GetPostByTags(string tag)
+       {
+           var repo = new PostRepository();
+           var response = new Response<List<BlogPost>>();
+           var posts = repo.GetTagPost(tag);
+
+           try
+           {
+               response.Success = true;
+               response.Data = posts;
+
+
+           }
+           catch (Exception ex)
+           {
+               response.Success = false;
+               response.Message = ex.Message;
+
+
+           }
+
+           return response;
+       }
+    }
+}

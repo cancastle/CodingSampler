@@ -1,0 +1,150 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.Remoting.Messaging;
+using System.Text;
+using System.Threading.Tasks;
+using TechBlog.DATA;
+using TechBlog.MODELS;
+
+namespace TechBlog.BLL
+{
+    public class AuthenticationOperations
+    {
+        public Response<string> LoginUser(User user)
+        {
+            var repo = new AuthenticationRepository();
+            var response = new Response<string>();
+            var valid = repo.IsUserValid(user.Email, user.Password);
+            try
+            {
+                if (valid == true)
+                {
+                    response.Success = true;
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Message = "User information is incorrect";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+
+
+            }
+
+            return response;
+
+        }
+        //public Response<string> AddUser(User user)
+        //{
+        //    var repo = new AuthenticationRepository();
+        //    var response = new Response<string>();
+        //   repo.RegisterUser(user);
+        //    try
+        //    {
+        //        response.Success = true;
+        //        response.Message = "User has been added";
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        response.Success = false;
+        //        response.Message = ex.Message;
+
+
+        //    }
+
+        //    return response;
+
+        //}
+
+        //public Response<string> AddRoles(User user)
+        //{
+        //    var repo = new AuthenticationRepository();
+        //    var response = new Response<string>();
+        //    user.Active1 = 1;
+        //    user.Active2 = 1;
+        //    if (user.securityRole1 == null)
+        //    {
+        //        user.Active1 = 0;
+        //    }
+        //    if (user.securityRole2 == null)
+        //    {
+        //        user.Active2 = 0;
+        //    }
+        //    repo.AddUserRoles(user);
+        //    try
+        //    {
+        //        response.Success = true;
+        //        response.Message = "User roles have been added";
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        response.Success = false;
+        //        response.Message = ex.Message;
+
+
+        //    }
+
+        //    return response;
+
+        //}
+
+        public Response<List<UserRoles>> CheckUserRoles(string email)
+        {
+            var repo = new AuthenticationRepository();
+            var response = new Response<List<UserRoles>>();
+            var userList = repo.GetUserRoles(email);
+           
+            try
+            {
+                response.Success = true;
+                response.Data = userList;
+
+
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+
+
+            }
+
+            return response;
+
+        }
+
+        public Response<List<User>> GetAllUsers()
+        {
+            var repo = new AuthenticationRepository();
+            var response = new Response<List<User>>();
+            var userList = repo.GetAllUsers();
+
+            try
+            {
+                response.Success = true;
+                response.Data = userList;
+
+
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+
+
+            }
+
+            return response;
+
+        }
+    }
+}

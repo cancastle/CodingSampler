@@ -1,0 +1,26 @@
+@model List<TechBlog.MODELS.StaticPage>
+<div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#003288">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>
+            @Html.ActionLink("TechBlog", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @style = "margin-top: 8px;" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
+                @*<li class="dropdown">
+                    @Html.Action("TagList", "Home")
+                </li>*@
+
+                    @foreach (var slug in Model)
+                    {
+<li><a href="/@slug.URLSlug">@slug.PageTitle</a></li>
+                }
+
+
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>

@@ -1,0 +1,258 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Dapper;
+using TechBlog.DATA.Config;
+using TechBlog.MODELS;
+
+namespace TechBlog.DATA
+{
+    public class PostRepository
+    {
+        public List<BlogPost> GetAllPosts()
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var blogPosts = cn.Query<BlogPost>("GetAllPosts", commandType: CommandType.StoredProcedure).ToList();
+                var tag = cn.Query<Tags>("GetAllPostTags", commandType: CommandType.StoredProcedure).ToList();
+                foreach (var post in blogPosts)
+                {
+                    post.Tags = new List<Tags>();
+                    foreach (var tags in tag)
+                    {
+                        if (Int32.Parse(post.BlogPostId) == tags.BlogPostId)
+                        {
+                            var newTag = new Tags();
+                            newTag.TagName = tags.TagName;
+                            newTag.TagId = tags.TagId;
+                            newTag.BlogPostId = tags.BlogPostId;
+                           
+                            var tString = (post.TagsString + tags.TagName + ",");
+                            post.TagsString = tString;
+                           
+                            
+                            post.Tags.Add(newTag);
+                        }
+                        
+                    }
+                }
+                return blogPosts.Where(s=>s.StatusId != 4).ToList();
+            }
+        }
+        public void AddPost(BlogPost post)
+        {
+
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                
+
+                var p = new DynamicParameters();
+
+                p.Add("StatusId", post.StatusId);
+                p.Add("PostTitle", post.PostTitle);
+                p.Add("HTMLContent", post.HtmlContent);
+                p.Add("Date", post.Date);
+                p.Add("ExpirationDate", post.ExpirationDate);
+                p.Add("PublishDate", post.PublishDate);
+                p.Add("ReasonRejected", post.ReasonRejected);
+                p.Add("Email", post.Email);
+                p.Add("URLSlug", post.URLSlug);
+                p.Add("UserId", post.UserId);
+
+                cn.Execute("AddPost", p, commandType: CommandType.StoredProcedure);
+                var maxPostId = cn.Query<string>("GetMaxPostId", commandType: CommandType.StoredProcedure).ToString();
+                var posts = GetAllPosts();
+                post.BlogPostId = posts.Max(c => c.BlogPostId);
+            }
+            AddTags(post);
+        }
+
+        public void AddTagsToPost(BlogPost post)
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+
+
+              //  var allTags = cn.Query<Tags>("GetAllPostTags", commandType: CommandType.StoredProcedure).ToList();
+              //var postTags =  allTags.Where(c => c.BlogPostId == Int32.Parse(post.BlogPostId));
+                
+              var p = new DynamicParameters();
+              p.Add("BlogPostId", post.BlogPostId);
+              cn.Execute("DeletePostTags", p, commandType: CommandType.StoredProcedure);
+
+                AddTags(post);
+
+            }
+        }
+        private string AddTags(BlogPost post)
+        {
+            var allTags = GetAllTags();
+
+            foreach (var tag in post.Tags)
+            {
+                if (allTags.Any(c=>c.TagName == tag.TagName))
+                {
+                    foreach (var oldTag in allTags)
+                    {
+                        if (oldTag.TagName == tag.TagName)
+                        {
+                            tag.TagId = oldTag.TagId;
+
+                        }
+                    }
+                    using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+                    {
+
+
+                        var p = new DynamicParameters();
+
+                        p.Add("TagId",tag.TagId);
+                        p.Add("BlogPostId", post.BlogPostId);
+
+
+                        cn.Execute("AddTagsToPost", p, commandType: CommandType.StoredProcedure);
+                       
+                    }
+                    
+                }
+                else
+                {
+                    using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+                    {
+                        var g = new DynamicParameters();
+                        g.Add("@TagName", tag.TagName);
+                        int maxTag = cn.Query<int>("AddTags", g, commandType: CommandType.StoredProcedure).ToList().FirstOrDefault();
+                        tag.TagId = maxTag;
+                        var p = new DynamicParameters();
+                        p.Add("TagId", tag.TagId);
+                        p.Add("BlogPostId", post.BlogPostId);
+
+
+                        cn.Execute("AddTagsToPost", p, commandType: CommandType.StoredProcedure);
+                    }
+                }
+            }
+            return null;
+        }
+
+        public List<Tags> GetAllTags()
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var tags = cn.Query<Tags>("GetTags", commandType: CommandType.StoredProcedure).ToList();
+
+
+                return tags;
+            }
+
+            
+        } 
+
+        public List<BlogPost> GetUserPosts(string email)
+        {
+            var allPosts = GetAllPosts();
+
+            var userPosts = allPosts.Where(c => c.Email == email).ToList();
+
+            return userPosts;
+        }
+
+        public BlogPost GetPost(string URLSlug)
+        {
+            var post = GetAllPosts().FirstOrDefault(u => u.URLSlug == URLSlug);
+
+            return post;
+        }
+
+        public void DeletePost(int id)
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var p = new DynamicParameters();
+                p.Add("BlogPostId", id);
+                cn.Execute("DeletePost", p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public List<BlogPost> GetLast5BlogPosts()
+        {
+           var allPosts= GetAllPosts().Where(c => c.StatusId == 1).OrderByDescending(c => c.PublishDate).Take(5).ToList();
+            return allPosts.Where(c => c.ExpirationDate > DateTime.Now && c.PublishDate <= DateTime.Now).ToList();
+        }
+
+        public void EditPost(BlogPost post)
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+
+
+                var p = new DynamicParameters();
+
+                p.Add("StatusId", post.StatusId);
+                p.Add("PostTitle", post.PostTitle);
+                p.Add("HTMLContent", post.HtmlContent);
+                p.Add("Date", post.Date);
+                p.Add("ExpirationDate", post.ExpirationDate);
+                p.Add("PublishDate", post.PublishDate);
+                p.Add("ReasonRejected", post.ReasonRejected);
+                p.Add("Email", post.Email);
+                p.Add("URLSlug", post.URLSlug);
+                p.Add("UserId", post.UserId);
+                p.Add("BlogPostId", post.BlogPostId);
+
+                cn.Execute("EditPost", p, commandType: CommandType.StoredProcedure);
+
+
+            }
+            AddTagsToPost(post);
+        }
+
+        public void UpdateStatus(BlogPost post)
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var p = new DynamicParameters();
+                p.Add("BlogPostId", post.BlogPostId);
+                p.Add("StatusId", post.StatusId);
+                p.Add("ReasonRejected", post.ReasonRejected);
+                cn.Execute("UpdateStatus", p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public List<Tags> GetTags()
+        {
+            using (SqlConnection cn = new SqlConnection(Settings.ConnectionString))
+            {
+                var tags = cn.Query<Tags>("GetAllTags", commandType: CommandType.StoredProcedure).ToList();
+
+
+                return tags;
+            }
+        }
+
+        public List<BlogPost> GetTagPost(string tag)
+        {
+            var tags = GetAllPosts().Where(t => t.TagsString !=null).ToList();
+            var blogList = new List<BlogPost>();
+            foreach (var post in tags)
+            {
+                foreach (var tagList in post.Tags)
+                {
+                    if (tagList.TagName == tag)
+                    {
+                        blogList.Add(post);
+                        break;
+                    }
+                }
+            }
+
+            return blogList;
+        }
+    }
+
+
+}

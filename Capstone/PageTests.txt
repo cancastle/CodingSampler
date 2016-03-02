@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NUnit.Framework;
+using TechBlog.BLL;
+using TechBlog.MODELS;
+
+namespace TechBlog.TEST
+{
+    [TestFixture]
+    public class PageTests
+    {
+        [Test]
+        public void AddPage()
+        {
+            var pageToAdd = new StaticPage();
+            pageToAdd.PageTitle = "TestPage";
+            pageToAdd.URLSlug = "TP1";
+
+            var ops = new PageOperations();
+            ops.AddPage(pageToAdd);
+
+            var result = ops.GetPage("TP1");
+            Assert.AreEqual(result.Data.PageTitle, "TestPage");
+        }
+
+        [Test]
+        public void EditPage()
+        {
+            var ops = new PageOperations();
+            var pageForEdit = ops.GetPage("TP1");
+            pageForEdit.Data.PageHtml = "Test Page Content";
+            var editedPage = pageForEdit.Data;
+            ops.EditPost(editedPage);
+
+            var result = ops.GetPage("TP1");
+            Assert.AreEqual(result.Data.PageHtml, "Test Page Content");
+        }
+
+        [Test]
+        public void DeletePage()
+        {
+            var ops = new PageOperations();
+            var result1 = ops.GetPage("TP1");
+            var pageToDelete = new StaticPage();
+            result1.Data = pageToDelete;
+            int id = pageToDelete.StaticPageId;
+            ops.DeletePage(id);
+            var result2 = ops.GetPage("TP1");
+            Assert.AreNotEqual(result2.Data.PageHtml, "Test Page Content");
+        }
+    }
+}

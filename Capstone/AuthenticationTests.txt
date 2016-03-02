@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NUnit.Framework;
+using TechBlog.DATA;
+
+namespace TechBlog.TEST
+{[TestFixture]
+    public class AuthenticationTest
+    {
+    [Test]
+    public void GetAllUsers()
+    {
+        var repo = new AuthenticationRepository();
+
+        var result = repo.GetAllUsers();
+        
+
+        Assert.IsTrue(result.Count >0);
+    }
+
+    [Test]
+    public void GetOneUser()
+    {
+        var repo = new AuthenticationRepository();
+        var user = "test@test.com";
+        var result = repo.GetOneUser(user);
+        string userEmail = result.Email;
+
+
+        Assert.AreEqual(userEmail,user);
+    }
+     [Test]
+    public void GetUserRoles()
+    {
+        var repo = new AuthenticationRepository();
+        var user = "test@test.com";
+        var result = repo.GetUserRoles(user);
+         
+
+
+       Assert.IsTrue(result.Count > 0);
+    }
+    }
+}
