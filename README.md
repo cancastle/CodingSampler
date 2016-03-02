@@ -1,2 +1,2 @@
-# CodingSamples
-Coding projects I have done as an apprentice software developer
+# CodingSampler
+Coding samples utilizing C#, T-SQL, JavaScript, JSON, JQuery, Bootstrap, .NET, VB
